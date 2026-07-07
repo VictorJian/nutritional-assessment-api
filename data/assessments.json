@@ -1,0 +1,1877 @@
+{
+  "1783420608561189000": {
+    "id": "1783420608561189000",
+    "createdAt": "2026-07-07T10:36:48.561189Z",
+    "data": {
+      "respondent": {
+        "name": "王小明",
+        "age": 36,
+        "date": "2026-07-07"
+      },
+      "answers": [
+        {
+          "questionId": 1,
+          "questionText": "01. 您每天吃蔬菜、水果少於兩次",
+          "checked": true,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素E",
+            "卵磷脂",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 2,
+          "questionText": "02. 您經常三餐不足 或 不定時用餐",
+          "checked": false,
+          "mappedSupplements": []
+        },
+        {
+          "questionId": 3,
+          "questionText": "03. 您常吃速食、零食、泡麵等食物（三餐）",
+          "checked": true,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "鈣鎂D",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 4,
+          "questionText": "04. 您經常沒有吃早餐（或是早午餐當一餐）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素B",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 5,
+          "questionText": "05. 您經常吃油炸食物 或 經常吃宵夜",
+          "checked": true,
+          "mappedSupplements": [
+            "維生素A",
+            "鈣鎂D"
+          ]
+        },
+        {
+          "questionId": 6,
+          "questionText": "06. 您經常喝酒（應酬）抽菸 或 嚼檳榔的習慣",
+          "checked": false,
+          "mappedSupplements": [
+            "纖維"
+          ]
+        },
+        {
+          "questionId": 7,
+          "questionText": "07. 您沒有每天喝牛奶或羊奶",
+          "checked": true,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 8,
+          "questionText": "08. 您現在是長期吃素（蛋奶、全素者）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素C",
+            "維生素E",
+            "纖維",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 9,
+          "questionText": "09. 您經常節食以減輕體重",
+          "checked": true,
+          "mappedSupplements": []
+        },
+        {
+          "questionId": 10,
+          "questionText": "10. 您經常打針、吃藥（含中、西藥及補品）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 11,
+          "questionText": "11. 您經常熬夜導致睡眠少於6小時 或 早上起不來",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "益生菌"
+          ]
+        },
+        {
+          "questionId": 12,
+          "questionText": "12. 您常常感覺到倦怠或精神不濟",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 13,
+          "questionText": "13. 您經常感冒",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 14,
+          "questionText": "14. 您很容易緊張 或 工作壓力大",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 15,
+          "questionText": "15. 您沒有每天定時排便 或 排便不順暢",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 16,
+          "questionText": "16. 您的排便顏色經常是黑色 或 深褐色",
+          "checked": false,
+          "mappedSupplements": [
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 17,
+          "questionText": "17. 您經常胃酸過多（胃脹氣）或胃痛（胃食道逆流）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素B",
+            "維生素E",
+            "卵磷脂",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 18,
+          "questionText": "18. 您經常腹瀉 或 消化不良",
+          "checked": false,
+          "mappedSupplements": [
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 19,
+          "questionText": "19. 您頭皮屑過多、經常頭皮癢",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 20,
+          "questionText": "20. 您的鼻子 或 皮膚有過敏的現象（氣喘）",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D"
+          ]
+        },
+        {
+          "questionId": 21,
+          "questionText": "21. 您常乾咳",
+          "checked": false,
+          "mappedSupplements": [
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 22,
+          "questionText": "22. 您經常對某些食物 或 保養品有過敏的現象",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 23,
+          "questionText": "23. 您經常口乾舌燥、嘴唇乾裂 或 嘴角破裂",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 24,
+          "questionText": "24. 您在夜間視覺常覺得較差 或 怕光",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素B",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 25,
+          "questionText": "25. 您的眼睛常常感覺疲勞、乾澀或刺痛",
+          "checked": false,
+          "mappedSupplements": [
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 26,
+          "questionText": "26. 您容易暈車 或 暈船",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 27,
+          "questionText": "27. 您的背上有很多痘痘",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "鈣鎂D",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 28,
+          "questionText": "28. 您有黑斑、雀斑、或 身體有不明的斑點",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 29,
+          "questionText": "29. 您有青春痘或粉刺",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 30,
+          "questionText": "30. 您常有抽筋的現象（手、腳）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素B",
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 31,
+          "questionText": "31. 您常有筋骨痠痛的現象",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素B",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 32,
+          "questionText": "32. 您的生理期會感到疼痛（下腹部）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素C",
+            "纖維"
+          ]
+        },
+        {
+          "questionId": 33,
+          "questionText": "33. 您經常頭痛",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素B",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 34,
+          "questionText": "34. 您容易失眠 或 睡不著（多夢、易醒）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 35,
+          "questionText": "35. 您經常情緒不佳、暴躁、沮喪 或 憂鬱",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 36,
+          "questionText": "36. 您的頭髮枯黃、易分岔斷裂",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 37,
+          "questionText": "37. 您的指甲有白斑、條紋 或 容易斷裂",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素B",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 38,
+          "questionText": "38. 您有貧血現象（易暈眩、體力差）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 39,
+          "questionText": "39. 您平常容易手腳冰冷",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 40,
+          "questionText": "40. 您很容易健忘 或 集中力有衰退現象",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素B",
+            "維生素C",
+            "維生素E",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 41,
+          "questionText": "41. 您的傷口不易癒合（大、小傷口）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素B",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 42,
+          "questionText": "42. 您牙齦容易出血 或 身上容易瘀血",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 43,
+          "questionText": "43. 您的體重有過重的現象",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素B",
+            "維生素E",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 44,
+          "questionText": "44. 您的血壓偏高 或 血脂肪過高",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 45,
+          "questionText": "45. 您的尿酸過高 或 有痛風現象",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 46,
+          "questionText": "46. 您的血糖過高 或 有糖尿病症狀",
+          "checked": false,
+          "mappedSupplements": [
+            "益生菌"
+          ]
+        },
+        {
+          "questionId": 47,
+          "questionText": "47. 您現在已經懷孕或在哺乳",
+          "checked": false,
+          "mappedSupplements": []
+        }
+      ],
+      "totals": [
+        {
+          "supplement": "優質蛋白素",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素A",
+          "score": 3,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素B",
+          "score": 0,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素C",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素E",
+          "score": 3,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "卵磷脂",
+          "score": 3,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "纖維",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "鈣鎂D",
+          "score": 2,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "益生菌",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "大蒜片",
+          "score": 3,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "魚油",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "綜合營養片",
+          "score": 0,
+          "needsExtraSupplement": false
+        }
+      ],
+      "recommendations": [],
+      "submittedAt": "2026-07-07T10:36:48.549Z"
+    }
+  },
+  "1783420973197691000": {
+    "id": "1783420973197691000",
+    "createdAt": "2026-07-07T10:42:53.197691Z",
+    "data": {
+      "respondent": {
+        "name": "77",
+        "age": 88,
+        "date": "2026-07-07"
+      },
+      "answers": [
+        {
+          "questionId": 1,
+          "questionText": "01. 您每天吃蔬菜、水果少於兩次",
+          "checked": true,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素E",
+            "卵磷脂",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 2,
+          "questionText": "02. 您經常三餐不足 或 不定時用餐",
+          "checked": false,
+          "mappedSupplements": []
+        },
+        {
+          "questionId": 3,
+          "questionText": "03. 您常吃速食、零食、泡麵等食物（三餐）",
+          "checked": true,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "鈣鎂D",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 4,
+          "questionText": "04. 您經常沒有吃早餐（或是早午餐當一餐）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素B",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 5,
+          "questionText": "05. 您經常吃油炸食物 或 經常吃宵夜",
+          "checked": true,
+          "mappedSupplements": [
+            "維生素A",
+            "鈣鎂D"
+          ]
+        },
+        {
+          "questionId": 6,
+          "questionText": "06. 您經常喝酒（應酬）抽菸 或 嚼檳榔的習慣",
+          "checked": false,
+          "mappedSupplements": [
+            "纖維"
+          ]
+        },
+        {
+          "questionId": 7,
+          "questionText": "07. 您沒有每天喝牛奶或羊奶",
+          "checked": true,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 8,
+          "questionText": "08. 您現在是長期吃素（蛋奶、全素者）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素C",
+            "維生素E",
+            "纖維",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 9,
+          "questionText": "09. 您經常節食以減輕體重",
+          "checked": true,
+          "mappedSupplements": []
+        },
+        {
+          "questionId": 10,
+          "questionText": "10. 您經常打針、吃藥（含中、西藥及補品）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 11,
+          "questionText": "11. 您經常熬夜導致睡眠少於6小時 或 早上起不來",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "益生菌"
+          ]
+        },
+        {
+          "questionId": 12,
+          "questionText": "12. 您常常感覺到倦怠或精神不濟",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 13,
+          "questionText": "13. 您經常感冒",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 14,
+          "questionText": "14. 您很容易緊張 或 工作壓力大",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 15,
+          "questionText": "15. 您沒有每天定時排便 或 排便不順暢",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 16,
+          "questionText": "16. 您的排便顏色經常是黑色 或 深褐色",
+          "checked": false,
+          "mappedSupplements": [
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 17,
+          "questionText": "17. 您經常胃酸過多（胃脹氣）或胃痛（胃食道逆流）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素B",
+            "維生素E",
+            "卵磷脂",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 18,
+          "questionText": "18. 您經常腹瀉 或 消化不良",
+          "checked": false,
+          "mappedSupplements": [
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 19,
+          "questionText": "19. 您頭皮屑過多、經常頭皮癢",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 20,
+          "questionText": "20. 您的鼻子 或 皮膚有過敏的現象（氣喘）",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D"
+          ]
+        },
+        {
+          "questionId": 21,
+          "questionText": "21. 您常乾咳",
+          "checked": false,
+          "mappedSupplements": [
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 22,
+          "questionText": "22. 您經常對某些食物 或 保養品有過敏的現象",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 23,
+          "questionText": "23. 您經常口乾舌燥、嘴唇乾裂 或 嘴角破裂",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 24,
+          "questionText": "24. 您在夜間視覺常覺得較差 或 怕光",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素B",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 25,
+          "questionText": "25. 您的眼睛常常感覺疲勞、乾澀或刺痛",
+          "checked": false,
+          "mappedSupplements": [
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 26,
+          "questionText": "26. 您容易暈車 或 暈船",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 27,
+          "questionText": "27. 您的背上有很多痘痘",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "鈣鎂D",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 28,
+          "questionText": "28. 您有黑斑、雀斑、或 身體有不明的斑點",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 29,
+          "questionText": "29. 您有青春痘或粉刺",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 30,
+          "questionText": "30. 您常有抽筋的現象（手、腳）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素B",
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 31,
+          "questionText": "31. 您常有筋骨痠痛的現象",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素B",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 32,
+          "questionText": "32. 您的生理期會感到疼痛（下腹部）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素C",
+            "纖維"
+          ]
+        },
+        {
+          "questionId": 33,
+          "questionText": "33. 您經常頭痛",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素B",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 34,
+          "questionText": "34. 您容易失眠 或 睡不著（多夢、易醒）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 35,
+          "questionText": "35. 您經常情緒不佳、暴躁、沮喪 或 憂鬱",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 36,
+          "questionText": "36. 您的頭髮枯黃、易分岔斷裂",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 37,
+          "questionText": "37. 您的指甲有白斑、條紋 或 容易斷裂",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素B",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 38,
+          "questionText": "38. 您有貧血現象（易暈眩、體力差）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 39,
+          "questionText": "39. 您平常容易手腳冰冷",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 40,
+          "questionText": "40. 您很容易健忘 或 集中力有衰退現象",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素B",
+            "維生素C",
+            "維生素E",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 41,
+          "questionText": "41. 您的傷口不易癒合（大、小傷口）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素B",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 42,
+          "questionText": "42. 您牙齦容易出血 或 身上容易瘀血",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 43,
+          "questionText": "43. 您的體重有過重的現象",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素B",
+            "維生素E",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 44,
+          "questionText": "44. 您的血壓偏高 或 血脂肪過高",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 45,
+          "questionText": "45. 您的尿酸過高 或 有痛風現象",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 46,
+          "questionText": "46. 您的血糖過高 或 有糖尿病症狀",
+          "checked": false,
+          "mappedSupplements": [
+            "益生菌"
+          ]
+        },
+        {
+          "questionId": 47,
+          "questionText": "47. 您現在已經懷孕或在哺乳",
+          "checked": false,
+          "mappedSupplements": []
+        }
+      ],
+      "totals": [
+        {
+          "supplement": "優質蛋白素",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素A",
+          "score": 3,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素B",
+          "score": 0,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素C",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素E",
+          "score": 3,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "卵磷脂",
+          "score": 3,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "纖維",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "鈣鎂D",
+          "score": 2,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "益生菌",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "大蒜片",
+          "score": 3,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "魚油",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "綜合營養片",
+          "score": 0,
+          "needsExtraSupplement": false
+        }
+      ],
+      "recommendations": [],
+      "submittedAt": "2026-07-07T10:42:53.189Z"
+    }
+  },
+  "20260707184553": {
+    "id": "20260707184553",
+    "createdAt": "2026-07-07T18:45:53.944101+08:00",
+    "data": {
+      "respondent": {
+        "name": "77",
+        "age": 88,
+        "date": "2026-07-07"
+      },
+      "answers": [
+        {
+          "questionId": 1,
+          "questionText": "01. 您每天吃蔬菜、水果少於兩次",
+          "checked": true,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素E",
+            "卵磷脂",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 2,
+          "questionText": "02. 您經常三餐不足 或 不定時用餐",
+          "checked": true,
+          "mappedSupplements": []
+        },
+        {
+          "questionId": 3,
+          "questionText": "03. 您常吃速食、零食、泡麵等食物（三餐）",
+          "checked": true,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "鈣鎂D",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 4,
+          "questionText": "04. 您經常沒有吃早餐（或是早午餐當一餐）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素B",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 5,
+          "questionText": "05. 您經常吃油炸食物 或 經常吃宵夜",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "鈣鎂D"
+          ]
+        },
+        {
+          "questionId": 6,
+          "questionText": "06. 您經常喝酒（應酬）抽菸 或 嚼檳榔的習慣",
+          "checked": true,
+          "mappedSupplements": [
+            "纖維"
+          ]
+        },
+        {
+          "questionId": 7,
+          "questionText": "07. 您沒有每天喝牛奶或羊奶",
+          "checked": true,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 8,
+          "questionText": "08. 您現在是長期吃素（蛋奶、全素者）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素C",
+            "維生素E",
+            "纖維",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 9,
+          "questionText": "09. 您經常節食以減輕體重",
+          "checked": true,
+          "mappedSupplements": []
+        },
+        {
+          "questionId": 10,
+          "questionText": "10. 您經常打針、吃藥（含中、西藥及補品）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 11,
+          "questionText": "11. 您經常熬夜導致睡眠少於6小時 或 早上起不來",
+          "checked": true,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "益生菌"
+          ]
+        },
+        {
+          "questionId": 12,
+          "questionText": "12. 您常常感覺到倦怠或精神不濟",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 13,
+          "questionText": "13. 您經常感冒",
+          "checked": true,
+          "mappedSupplements": [
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 14,
+          "questionText": "14. 您很容易緊張 或 工作壓力大",
+          "checked": true,
+          "mappedSupplements": [
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 15,
+          "questionText": "15. 您沒有每天定時排便 或 排便不順暢",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 16,
+          "questionText": "16. 您的排便顏色經常是黑色 或 深褐色",
+          "checked": false,
+          "mappedSupplements": [
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 17,
+          "questionText": "17. 您經常胃酸過多（胃脹氣）或胃痛（胃食道逆流）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素B",
+            "維生素E",
+            "卵磷脂",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 18,
+          "questionText": "18. 您經常腹瀉 或 消化不良",
+          "checked": false,
+          "mappedSupplements": [
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 19,
+          "questionText": "19. 您頭皮屑過多、經常頭皮癢",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 20,
+          "questionText": "20. 您的鼻子 或 皮膚有過敏的現象（氣喘）",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D"
+          ]
+        },
+        {
+          "questionId": 21,
+          "questionText": "21. 您常乾咳",
+          "checked": false,
+          "mappedSupplements": [
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 22,
+          "questionText": "22. 您經常對某些食物 或 保養品有過敏的現象",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 23,
+          "questionText": "23. 您經常口乾舌燥、嘴唇乾裂 或 嘴角破裂",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 24,
+          "questionText": "24. 您在夜間視覺常覺得較差 或 怕光",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素B",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 25,
+          "questionText": "25. 您的眼睛常常感覺疲勞、乾澀或刺痛",
+          "checked": false,
+          "mappedSupplements": [
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 26,
+          "questionText": "26. 您容易暈車 或 暈船",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "魚油",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 27,
+          "questionText": "27. 您的背上有很多痘痘",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "鈣鎂D",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 28,
+          "questionText": "28. 您有黑斑、雀斑、或 身體有不明的斑點",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 29,
+          "questionText": "29. 您有青春痘或粉刺",
+          "checked": false,
+          "mappedSupplements": [
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 30,
+          "questionText": "30. 您常有抽筋的現象（手、腳）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素B",
+            "維生素C",
+            "維生素E",
+            "卵磷脂",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 31,
+          "questionText": "31. 您常有筋骨痠痛的現象",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素B",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 32,
+          "questionText": "32. 您的生理期會感到疼痛（下腹部）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素C",
+            "纖維"
+          ]
+        },
+        {
+          "questionId": 33,
+          "questionText": "33. 您經常頭痛",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素B",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 34,
+          "questionText": "34. 您容易失眠 或 睡不著（多夢、易醒）",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 35,
+          "questionText": "35. 您經常情緒不佳、暴躁、沮喪 或 憂鬱",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 36,
+          "questionText": "36. 您的頭髮枯黃、易分岔斷裂",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 37,
+          "questionText": "37. 您的指甲有白斑、條紋 或 容易斷裂",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素B",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 38,
+          "questionText": "38. 您有貧血現象（易暈眩、體力差）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 39,
+          "questionText": "39. 您平常容易手腳冰冷",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 40,
+          "questionText": "40. 您很容易健忘 或 集中力有衰退現象",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "維生素A",
+            "維生素B",
+            "維生素C",
+            "維生素E",
+            "纖維",
+            "益生菌",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 41,
+          "questionText": "41. 您的傷口不易癒合（大、小傷口）",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素B",
+            "卵磷脂",
+            "纖維",
+            "鈣鎂D",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 42,
+          "questionText": "42. 您牙齦容易出血 或 身上容易瘀血",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素E",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "大蒜片",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 43,
+          "questionText": "43. 您的體重有過重的現象",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "維生素B",
+            "維生素E",
+            "大蒜片"
+          ]
+        },
+        {
+          "questionId": 44,
+          "questionText": "44. 您的血壓偏高 或 血脂肪過高",
+          "checked": false,
+          "mappedSupplements": [
+            "維生素A",
+            "綜合營養片"
+          ]
+        },
+        {
+          "questionId": 45,
+          "questionText": "45. 您的尿酸過高 或 有痛風現象",
+          "checked": false,
+          "mappedSupplements": [
+            "優質蛋白素",
+            "卵磷脂",
+            "纖維",
+            "益生菌",
+            "魚油"
+          ]
+        },
+        {
+          "questionId": 46,
+          "questionText": "46. 您的血糖過高 或 有糖尿病症狀",
+          "checked": false,
+          "mappedSupplements": [
+            "益生菌"
+          ]
+        },
+        {
+          "questionId": 47,
+          "questionText": "47. 您現在已經懷孕或在哺乳",
+          "checked": false,
+          "mappedSupplements": []
+        }
+      ],
+      "totals": [
+        {
+          "supplement": "優質蛋白素",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素A",
+          "score": 2,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素B",
+          "score": 0,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素C",
+          "score": 1,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "維生素E",
+          "score": 5,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "卵磷脂",
+          "score": 5,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "纖維",
+          "score": 4,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "鈣鎂D",
+          "score": 3,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "益生菌",
+          "score": 3,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "大蒜片",
+          "score": 4,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "魚油",
+          "score": 2,
+          "needsExtraSupplement": false
+        },
+        {
+          "supplement": "綜合營養片",
+          "score": 0,
+          "needsExtraSupplement": false
+        }
+      ],
+      "recommendations": [],
+      "submittedAt": "2026-07-07T10:45:53.938Z"
+    }
+  }
+}
