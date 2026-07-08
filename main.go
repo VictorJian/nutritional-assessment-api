@@ -70,6 +70,7 @@ func getenv(key string, fallback string) string {
 func (a *app) routes() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/health", a.handleHealth)
+	mux.HandleFunc("/ping", a.handlePing)
 	mux.HandleFunc("/api/assessments", a.handleAssessments)
 	mux.HandleFunc("/api/assessments/", a.handleAssessmentByID)
 	mux.HandleFunc("/api/send", a.handleAssessments)
@@ -79,10 +80,20 @@ func (a *app) routes() http.Handler {
 
 func withCORS(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-		w.Header().Set("Cache-Control", "no-store")
+		headers := w.Header()
+		requestHeaders := strings.TrimSpace(r.Header.Get("Access-Control-Request-Headers"))
+		if requestHeaders == "" {
+			requestHeaders = "Accept, Authorization, Content-Type, X-Requested-With"
+		}
+
+		headers.Set("Access-Control-Allow-Origin", "*")
+		headers.Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		headers.Set("Access-Control-Allow-Headers", requestHeaders)
+		headers.Set("Access-Control-Max-Age", "86400")
+		headers.Add("Vary", "Origin")
+		headers.Add("Vary", "Access-Control-Request-Method")
+		headers.Add("Vary", "Access-Control-Request-Headers")
+		headers.Set("Cache-Control", "no-store")
 
 		if r.Method == http.MethodOptions {
 			w.WriteHeader(http.StatusNoContent)
@@ -100,6 +111,15 @@ func (a *app) handleHealth(w http.ResponseWriter, r *http.Request) {
 	}
 
 	writeJSON(w, http.StatusOK, map[string]bool{"ok": true})
+}
+
+func (a *app) handlePing(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		writeJSON(w, http.StatusMethodNotAllowed, map[string]string{"error": "Method not allowed."})
+		return
+	}
+
+	writeJSON(w, http.StatusOK, map[string]string{"message": "pong"})
 }
 
 func (a *app) handleAssessments(w http.ResponseWriter, r *http.Request) {

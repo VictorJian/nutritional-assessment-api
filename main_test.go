@@ -71,3 +71,55 @@ func TestTimestampIDUsesYearMonthDayHourMinuteSecond(t *testing.T) {
 		t.Fatalf("timestampID() = %q, want %q", got, want)
 	}
 }
+
+func TestPing(t *testing.T) {
+	application := &app{
+		dataFile: filepath.Join(t.TempDir(), "assessments.json"),
+		records:  map[string]record{},
+	}
+
+	request := httptest.NewRequest(http.MethodGet, "/ping", nil)
+	response := httptest.NewRecorder()
+
+	application.routes().ServeHTTP(response, request)
+
+	if response.Code != http.StatusOK {
+		t.Fatalf("ping status = %d, want %d", response.Code, http.StatusOK)
+	}
+
+	var result map[string]string
+	if err := json.Unmarshal(response.Body.Bytes(), &result); err != nil {
+		t.Fatalf("decode ping response: %v", err)
+	}
+	if got, want := result["message"], "pong"; got != want {
+		t.Fatalf("ping message = %q, want %q", got, want)
+	}
+}
+
+func TestCORSPreflight(t *testing.T) {
+	application := &app{
+		dataFile: filepath.Join(t.TempDir(), "assessments.json"),
+		records:  map[string]record{},
+	}
+
+	request := httptest.NewRequest(http.MethodOptions, "/api/assessments", nil)
+	request.Header.Set("Origin", "http://localhost:3000")
+	request.Header.Set("Access-Control-Request-Method", http.MethodPost)
+	request.Header.Set("Access-Control-Request-Headers", "Content-Type, X-Requested-With")
+	response := httptest.NewRecorder()
+
+	application.routes().ServeHTTP(response, request)
+
+	if response.Code != http.StatusNoContent {
+		t.Fatalf("preflight status = %d, want %d", response.Code, http.StatusNoContent)
+	}
+	if got, want := response.Header().Get("Access-Control-Allow-Origin"), "*"; got != want {
+		t.Fatalf("Access-Control-Allow-Origin = %q, want %q", got, want)
+	}
+	if got, want := response.Header().Get("Access-Control-Allow-Methods"), "GET, POST, OPTIONS"; got != want {
+		t.Fatalf("Access-Control-Allow-Methods = %q, want %q", got, want)
+	}
+	if got, want := response.Header().Get("Access-Control-Allow-Headers"), "Content-Type, X-Requested-With"; got != want {
+		t.Fatalf("Access-Control-Allow-Headers = %q, want %q", got, want)
+	}
+}
