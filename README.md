@@ -190,6 +190,8 @@ POST /api/assessments -> 201 (42ms)
 GET /api/assessments/20260709110511 -> 200 (8ms)
 ```
 
+Render health check 的 `GET /health` 不會寫入 request log，避免 logs 被健康檢查洗版。
+
 ## 測試
 
 執行：

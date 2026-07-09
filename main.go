@@ -135,6 +135,11 @@ func (r *statusRecorder) Write(body []byte) (int, error) {
 
 func withRequestLogging(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path == "/health" {
+			next.ServeHTTP(w, r)
+			return
+		}
+
 		if r.Method != http.MethodGet && r.Method != http.MethodPost {
 			next.ServeHTTP(w, r)
 			return
