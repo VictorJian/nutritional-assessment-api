@@ -16,3 +16,23 @@ Icon
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+
+### Environment
+.env
+.env.*
+!.env.example
+
+### IDE
+.idea/
+*.iml
+
+### Go
+bin/
+*.test
+*.out
+coverage.out
+nutritional-assessment-api
+
+### Local data
+data/*.json
+data/*.tmp

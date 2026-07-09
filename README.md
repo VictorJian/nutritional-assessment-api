@@ -7,9 +7,10 @@
 - 接收前端送出的 JSON 評估資料。
 - 使用建立時間產生 `YYYYMMDDHHMMSS` 格式紀錄 ID。
 - 如果同一秒已有相同 ID，會自動往後加秒數避免衝突。
-- 將資料儲存在本機 JSON 檔案。
+- 可將資料儲存在 PostgreSQL；未設定資料庫時，改用本機 JSON 檔案。
 - 支援用 ID 查詢單筆紀錄。
 - 支援用姓名查詢多筆紀錄。
+- 會在 terminal / Render Logs 記錄 `GET` 和 `POST` request。
 - 已開啟 CORS，前端可從不同來源呼叫 API。
 - 保留 `/api/send` 舊路徑相容。
 
@@ -37,7 +38,7 @@ PORT=8080 go run .
 
 ### `DATA_FILE`
 
-設定資料儲存檔案。預設是：
+未設定 `DATABASE_URL` 時，設定本機 JSON 儲存檔案。預設是：
 
 ```text
 data/assessments.json
@@ -47,6 +48,16 @@ data/assessments.json
 
 ```sh
 DATA_FILE=data/assessments.json go run .
+```
+
+### `DATABASE_URL`
+
+設定 PostgreSQL 連線字串。若有設定，後端會使用 PostgreSQL 儲存資料；若未設定，後端會使用 `DATA_FILE` 的本機 JSON 檔案。
+
+Render 部署時可放入 Neon 提供的 connection string：
+
+```text
+DATABASE_URL=postgresql://user:password@xxxx.neon.tech/neondb?sslmode=require&channel_binding=require
 ```
 
 ## API 端點
@@ -145,13 +156,39 @@ curl "http://localhost:8080/api/assessments?name=王小明"
 
 ## 資料儲存
 
-資料預設儲存在：
+如果有設定 `DATABASE_URL`，資料會寫入 PostgreSQL 的 `assessments` table。建議在 Neon SQL Editor 建立：
+
+```sql
+CREATE TABLE IF NOT EXISTS assessments (
+  id TEXT PRIMARY KEY,
+  created_at TIMESTAMPTZ NOT NULL,
+  data JSONB NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS assessments_name_idx
+ON assessments ((lower(data #>> '{respondent,name}')));
+```
+
+程式啟動時也會自動執行 `CREATE TABLE IF NOT EXISTS` 和 `CREATE INDEX IF NOT EXISTS`，避免新環境缺少 table。
+
+如果沒有設定 `DATABASE_URL`，資料預設儲存在：
 
 ```text
 data/assessments.json
 ```
 
-檔案會以紀錄 ID 作為 key。若要改變儲存位置，可使用 `DATA_FILE`。
+檔案會以紀錄 ID 作為 key。若要改變本機儲存位置，可使用 `DATA_FILE`。
+
+## Request Log
+
+後端會在 terminal 或 Render Logs 記錄 `GET` 和 `POST` request，例如：
+
+```text
+GET /ping -> 200 (1ms)
+POST /api/assessments name=王小明 date=2026-07-09 answers=12
+POST /api/assessments -> 201 (42ms)
+GET /api/assessments/20260709110511 -> 200 (8ms)
+```
 
 ## 測試
 

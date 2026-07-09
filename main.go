@@ -1,6 +1,8 @@
 package main
 
 import (
+	"context"
+	"database/sql"
 	"encoding/json"
 	"errors"
 	"io"
@@ -12,6 +14,9 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/jackc/pgx/v5/pgconn"
+	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
 const maxBodySize = 1024 * 1024
@@ -28,24 +33,38 @@ type searchResponse struct {
 	Records []record `json:"records"`
 }
 
+type recordStore interface {
+	Create(raw json.RawMessage, now time.Time) (record, error)
+	Get(id string) (record, bool, error)
+	SearchByName(name string) ([]record, error)
+	Close() error
+}
+
 type app struct {
+	store recordStore
+}
+
+type fileStore struct {
 	dataFile string
 	mu       sync.RWMutex
 	records  map[string]record
+}
+
+type postgresStore struct {
+	db *sql.DB
 }
 
 func main() {
 	port := getenv("PORT", "8080")
 	dataFile := getenv("DATA_FILE", filepath.Join("data", "assessments.json"))
 
-	application := &app{
-		dataFile: dataFile,
-		records:  map[string]record{},
+	store, err := newStore(dataFile, os.Getenv("DATABASE_URL"))
+	if err != nil {
+		log.Fatalf("init storage: %v", err)
 	}
+	defer store.Close()
 
-	if err := application.load(); err != nil {
-		log.Fatalf("load records: %v", err)
-	}
+	application := &app{store: store}
 
 	server := &http.Server{
 		Addr:              ":" + port,
@@ -67,6 +86,25 @@ func getenv(key string, fallback string) string {
 	return value
 }
 
+func newStore(dataFile string, databaseURL string) (recordStore, error) {
+	databaseURL = strings.TrimSpace(databaseURL)
+	if databaseURL != "" {
+		store, err := newPostgresStore(databaseURL)
+		if err != nil {
+			return nil, err
+		}
+		log.Println("Using PostgreSQL assessment storage.")
+		return store, nil
+	}
+
+	store, err := newFileStore(dataFile)
+	if err != nil {
+		return nil, err
+	}
+	log.Printf("Using JSON file assessment storage: %s", dataFile)
+	return store, nil
+}
+
 func (a *app) routes() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/health", a.handleHealth)
@@ -75,7 +113,42 @@ func (a *app) routes() http.Handler {
 	mux.HandleFunc("/api/assessments/", a.handleAssessmentByID)
 	mux.HandleFunc("/api/send", a.handleAssessments)
 	mux.HandleFunc("/api/send/", a.handleAssessmentByID)
-	return withCORS(mux)
+	return withRequestLogging(withCORS(mux))
+}
+
+type statusRecorder struct {
+	http.ResponseWriter
+	status int
+}
+
+func (r *statusRecorder) WriteHeader(status int) {
+	r.status = status
+	r.ResponseWriter.WriteHeader(status)
+}
+
+func (r *statusRecorder) Write(body []byte) (int, error) {
+	if r.status == 0 {
+		r.status = http.StatusOK
+	}
+	return r.ResponseWriter.Write(body)
+}
+
+func withRequestLogging(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodGet && r.Method != http.MethodPost {
+			next.ServeHTTP(w, r)
+			return
+		}
+
+		started := time.Now()
+		recorder := &statusRecorder{ResponseWriter: w}
+		next.ServeHTTP(recorder, r)
+		status := recorder.status
+		if status == 0 {
+			status = http.StatusOK
+		}
+		log.Printf("%s %s -> %d (%s)", r.Method, r.URL.RequestURI(), status, time.Since(started).Round(time.Millisecond))
+	})
 }
 
 func withCORS(next http.Handler) http.Handler {
@@ -183,40 +256,31 @@ func (a *app) createAssessment(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "Request body must be a JSON object."})
 		return
 	}
+	log.Printf(
+		"POST %s name=%s date=%s answers=%d",
+		r.URL.RequestURI(),
+		logValue(payloadRespondentName(payload)),
+		logValue(payloadRespondentDate(payload)),
+		payloadCheckedAnswerCount(payload),
+	)
 
-	a.mu.Lock()
-	now := time.Now()
-	id := timestampID(now)
-	for {
-		if _, exists := a.records[id]; !exists {
-			break
-		}
-		now = now.Add(time.Second)
-		id = timestampID(now)
-	}
-
-	createdRecord := record{
-		ID:        id,
-		CreatedAt: now.Format(time.RFC3339Nano),
-		Data:      json.RawMessage(raw),
-	}
-
-	a.records[id] = createdRecord
-	if err := a.saveLocked(); err != nil {
-		delete(a.records, id)
-		a.mu.Unlock()
+	createdRecord, err := a.store.Create(json.RawMessage(raw), time.Now())
+	if err != nil {
+		log.Printf("save assessment: %v", err)
 		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "Unable to save assessment."})
 		return
 	}
-	a.mu.Unlock()
 
 	writeJSON(w, http.StatusCreated, createdRecord)
 }
 
 func (a *app) getAssessment(w http.ResponseWriter, id string) {
-	a.mu.RLock()
-	savedRecord, ok := a.records[id]
-	a.mu.RUnlock()
+	savedRecord, ok, err := a.store.Get(id)
+	if err != nil {
+		log.Printf("get assessment %q: %v", id, err)
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "Unable to get assessment."})
+		return
+	}
 
 	if !ok {
 		writeJSON(w, http.StatusNotFound, map[string]string{"error": "Assessment not found."})
@@ -233,20 +297,12 @@ func (a *app) searchAssessmentsByName(w http.ResponseWriter, name string) {
 		return
 	}
 
-	matches := []record{}
-
-	a.mu.RLock()
-	for _, savedRecord := range a.records {
-		respondentName := strings.ToLower(recordRespondentName(savedRecord))
-		if respondentName != "" && strings.Contains(respondentName, normalizedQuery) {
-			matches = append(matches, savedRecord)
-		}
+	matches, err := a.store.SearchByName(normalizedQuery)
+	if err != nil {
+		log.Printf("search assessments by name %q: %v", name, err)
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "Unable to search assessments."})
+		return
 	}
-	a.mu.RUnlock()
-
-	sort.Slice(matches, func(i, j int) bool {
-		return matches[i].ID > matches[j].ID
-	})
 
 	writeJSON(w, http.StatusOK, searchResponse{
 		Query:   name,
@@ -267,8 +323,123 @@ func recordRespondentName(savedRecord record) string {
 	return strings.TrimSpace(payload.Respondent.Name)
 }
 
-func (a *app) load() error {
-	raw, err := os.ReadFile(a.dataFile)
+func payloadRespondentName(payload map[string]any) string {
+	respondent, ok := payload["respondent"].(map[string]any)
+	if !ok {
+		return ""
+	}
+	name, _ := respondent["name"].(string)
+	return strings.TrimSpace(name)
+}
+
+func payloadRespondentDate(payload map[string]any) string {
+	respondent, ok := payload["respondent"].(map[string]any)
+	if !ok {
+		return ""
+	}
+	date, _ := respondent["date"].(string)
+	return strings.TrimSpace(date)
+}
+
+func payloadCheckedAnswerCount(payload map[string]any) int {
+	rawAnswers, ok := payload["answers"].([]any)
+	if !ok {
+		return 0
+	}
+
+	count := 0
+	for _, rawAnswer := range rawAnswers {
+		answer, ok := rawAnswer.(map[string]any)
+		if !ok {
+			continue
+		}
+		checked, _ := answer["checked"].(bool)
+		if checked {
+			count++
+		}
+	}
+	return count
+}
+
+func logValue(value string) string {
+	if value == "" {
+		return "-"
+	}
+	return value
+}
+
+func newFileStore(dataFile string) (*fileStore, error) {
+	store := &fileStore{
+		dataFile: dataFile,
+		records:  map[string]record{},
+	}
+	if err := store.load(); err != nil {
+		return nil, err
+	}
+	return store, nil
+}
+
+func (s *fileStore) Create(raw json.RawMessage, now time.Time) (record, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	id := timestampID(now)
+	for {
+		if _, exists := s.records[id]; !exists {
+			break
+		}
+		now = now.Add(time.Second)
+		id = timestampID(now)
+	}
+
+	createdRecord := record{
+		ID:        id,
+		CreatedAt: now.Format(time.RFC3339Nano),
+		Data:      raw,
+	}
+
+	s.records[id] = createdRecord
+	if err := s.saveLocked(); err != nil {
+		delete(s.records, id)
+		return record{}, err
+	}
+
+	return createdRecord, nil
+}
+
+func (s *fileStore) Get(id string) (record, bool, error) {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+
+	savedRecord, ok := s.records[id]
+	return savedRecord, ok, nil
+}
+
+func (s *fileStore) SearchByName(name string) ([]record, error) {
+	matches := []record{}
+
+	s.mu.RLock()
+	for _, savedRecord := range s.records {
+		respondentName := strings.ToLower(recordRespondentName(savedRecord))
+		if respondentName != "" && strings.Contains(respondentName, name) {
+			matches = append(matches, savedRecord)
+		}
+	}
+	s.mu.RUnlock()
+
+	sort.Slice(matches, func(i, j int) bool {
+		return matches[i].ID > matches[j].ID
+	})
+
+	return matches, nil
+}
+
+func (s *fileStore) Close() error {
+	return nil
+}
+
+func (s *fileStore) load() error {
+	raw, err := os.ReadFile(s.dataFile)
 	if err != nil {
 		if errors.Is(err, os.ErrNotExist) {
 			return nil
@@ -279,24 +450,182 @@ func (a *app) load() error {
 		return nil
 	}
 
-	return json.Unmarshal(raw, &a.records)
+	return json.Unmarshal(raw, &s.records)
 }
 
-func (a *app) saveLocked() error {
-	if err := os.MkdirAll(filepath.Dir(a.dataFile), 0755); err != nil {
+func (s *fileStore) saveLocked() error {
+	if err := os.MkdirAll(filepath.Dir(s.dataFile), 0755); err != nil {
 		return err
 	}
 
-	raw, err := json.MarshalIndent(a.records, "", "  ")
+	raw, err := json.MarshalIndent(s.records, "", "  ")
 	if err != nil {
 		return err
 	}
 
-	tempFile := a.dataFile + ".tmp"
+	tempFile := s.dataFile + ".tmp"
 	if err := os.WriteFile(tempFile, raw, 0644); err != nil {
 		return err
 	}
-	return os.Rename(tempFile, a.dataFile)
+	return os.Rename(tempFile, s.dataFile)
+}
+
+func newPostgresStore(databaseURL string) (*postgresStore, error) {
+	db, err := sql.Open("pgx", databaseURL)
+	if err != nil {
+		return nil, err
+	}
+	db.SetMaxOpenConns(5)
+	db.SetMaxIdleConns(5)
+	db.SetConnMaxLifetime(30 * time.Minute)
+
+	store := &postgresStore{db: db}
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	if err := db.PingContext(ctx); err != nil {
+		db.Close()
+		return nil, err
+	}
+	if err := store.ensureSchema(ctx); err != nil {
+		db.Close()
+		return nil, err
+	}
+
+	return store, nil
+}
+
+func (s *postgresStore) ensureSchema(ctx context.Context) error {
+	statements := []string{
+		`CREATE TABLE IF NOT EXISTS assessments (
+			id TEXT PRIMARY KEY,
+			created_at TIMESTAMPTZ NOT NULL,
+			data JSONB NOT NULL
+		)`,
+		`CREATE INDEX IF NOT EXISTS assessments_name_idx
+			ON assessments ((lower(data #>> '{respondent,name}')))`,
+	}
+
+	for _, statement := range statements {
+		if _, err := s.db.ExecContext(ctx, statement); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (s *postgresStore) Create(raw json.RawMessage, now time.Time) (record, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	for attempts := 0; attempts < 10; attempts++ {
+		createdRecord := record{
+			ID:        timestampID(now),
+			CreatedAt: now.Format(time.RFC3339Nano),
+			Data:      raw,
+		}
+
+		_, err := s.db.ExecContext(
+			ctx,
+			`INSERT INTO assessments (id, created_at, data) VALUES ($1, $2, $3::jsonb)`,
+			createdRecord.ID,
+			now,
+			string(raw),
+		)
+		if err == nil {
+			return createdRecord, nil
+		}
+		if isUniqueViolation(err) {
+			now = now.Add(time.Second)
+			continue
+		}
+		return record{}, err
+	}
+
+	return record{}, errors.New("unable to create unique timestamp id")
+}
+
+func (s *postgresStore) Get(id string) (record, bool, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	row := s.db.QueryRowContext(
+		ctx,
+		`SELECT id, created_at, data FROM assessments WHERE id = $1`,
+		id,
+	)
+
+	savedRecord, err := scanRecord(row)
+	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return record{}, false, nil
+		}
+		return record{}, false, err
+	}
+
+	return savedRecord, true, nil
+}
+
+func (s *postgresStore) SearchByName(name string) ([]record, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	rows, err := s.db.QueryContext(
+		ctx,
+		`SELECT id, created_at, data
+		 FROM assessments
+		 WHERE lower(data #>> '{respondent,name}') LIKE '%' || $1 || '%'
+		 ORDER BY id DESC`,
+		name,
+	)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	matches := []record{}
+	for rows.Next() {
+		savedRecord, err := scanRecord(rows)
+		if err != nil {
+			return nil, err
+		}
+		matches = append(matches, savedRecord)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return matches, nil
+}
+
+func (s *postgresStore) Close() error {
+	return s.db.Close()
+}
+
+type recordScanner interface {
+	Scan(dest ...any) error
+}
+
+func scanRecord(scanner recordScanner) (record, error) {
+	var id string
+	var createdAt time.Time
+	var raw []byte
+
+	if err := scanner.Scan(&id, &createdAt, &raw); err != nil {
+		return record{}, err
+	}
+
+	return record{
+		ID:        id,
+		CreatedAt: createdAt.Format(time.RFC3339Nano),
+		Data:      json.RawMessage(raw),
+	}, nil
+}
+
+func isUniqueViolation(err error) bool {
+	var pgErr *pgconn.PgError
+	return errors.As(err, &pgErr) && pgErr.Code == "23505"
 }
 
 func writeJSON(w http.ResponseWriter, status int, payload any) {

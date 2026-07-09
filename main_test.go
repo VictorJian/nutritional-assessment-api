@@ -12,11 +12,19 @@ import (
 	"time"
 )
 
-func TestCreateGetAndSearchAssessment(t *testing.T) {
-	application := &app{
-		dataFile: filepath.Join(t.TempDir(), "assessments.json"),
-		records:  map[string]record{},
+func newTestApp(t *testing.T) *app {
+	t.Helper()
+
+	store, err := newFileStore(filepath.Join(t.TempDir(), "assessments.json"))
+	if err != nil {
+		t.Fatalf("create test store: %v", err)
 	}
+
+	return &app{store: store}
+}
+
+func TestCreateGetAndSearchAssessment(t *testing.T) {
+	application := newTestApp(t)
 
 	handler := application.routes()
 	body := `{"respondent":{"name":"王小明","age":30,"date":"2026-07-06"},"recommendations":[]}`
@@ -73,10 +81,7 @@ func TestTimestampIDUsesYearMonthDayHourMinuteSecond(t *testing.T) {
 }
 
 func TestPing(t *testing.T) {
-	application := &app{
-		dataFile: filepath.Join(t.TempDir(), "assessments.json"),
-		records:  map[string]record{},
-	}
+	application := newTestApp(t)
 
 	request := httptest.NewRequest(http.MethodGet, "/ping", nil)
 	response := httptest.NewRecorder()
@@ -97,10 +102,7 @@ func TestPing(t *testing.T) {
 }
 
 func TestCORSPreflight(t *testing.T) {
-	application := &app{
-		dataFile: filepath.Join(t.TempDir(), "assessments.json"),
-		records:  map[string]record{},
-	}
+	application := newTestApp(t)
 
 	request := httptest.NewRequest(http.MethodOptions, "/api/assessments", nil)
 	request.Header.Set("Origin", "http://localhost:3000")
